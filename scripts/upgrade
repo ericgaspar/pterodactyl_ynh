@@ -43,6 +43,14 @@ ynh_config_add_systemd
 yunohost service add "$app" --description="A short description of the app" --log="/var/log/$app/$app.log"
 
 #=================================================
+# INSTALL BOOKSTACK WITH COMPOSER
+#=================================================
+ynh_script_progression "Installing $app with Composer..."
+
+ynh_composer_install
+ynh_composer_exec install --no-dev --optimize-autoloader
+
+#=================================================
 # START SYSTEMD SERVICE
 #=================================================
 ynh_script_progression "Starting $app's systemd service..."
