@@ -12,12 +12,10 @@ version = "1.11.7~ynh1"
 maintainers = ["eric_G"]
 
 [upstream]
-license = "free"
-website = "https://example.com"
-demo = "https://demo.example.com"
-admindoc = "https://yunohost.org/packaging_apps"
-userdoc = "https://yunohost.org/apps"
-code = "https://some.forge.com/example/example"
+license = "MIT"
+website = "https://pterodactyl.io/"
+admindoc = "https://pterodactyl.io/project/introduction.html"
+code = "https://github.com/pterodactyl/panel"
 
 [integration]
 yunohost = ">= 11.2.30"
