@@ -45,7 +45,7 @@ yunohost service add "$app" --description="A short description of the app" --log
 ynh_add_config --template=".cron" --destination="/etc/cron.d/$app"
 
 #=================================================
-# INSTALL BOOKSTACK WITH COMPOSER
+# INSTALL PTERODACTYL WITH COMPOSER
 #=================================================
 ynh_script_progression "Installing $app with Composer..."
 
@@ -53,7 +53,7 @@ ynh_composer_install
 ynh_composer_exec install --no-dev --optimize-autoloader
 
 #=================================================
-# FINAL BOOKSTACK INSTALL
+# FINAL PTERODACTYL INSTALL
 #=================================================
 ynh_script_progression "Install $app"
 

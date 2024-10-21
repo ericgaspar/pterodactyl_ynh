@@ -43,12 +43,26 @@ ynh_config_add_systemd
 yunohost service add "$app" --description="A short description of the app" --log="/var/log/$app/$app.log"
 
 #=================================================
-# INSTALL BOOKSTACK WITH COMPOSER
+# INSTALL PTERODACTYL WITH COMPOSER
 #=================================================
 ynh_script_progression "Installing $app with Composer..."
 
 ynh_composer_install
 ynh_composer_exec install --no-dev --optimize-autoloader
+
+#=================================================
+# FINAL PTERODACTYL INSTALL
+#=================================================
+ynh_script_progression "Install $app"
+
+pushd $install_dir
+	php$php_version artisan key:generate --force
+	php$php_version artisan p:environment:setup
+	php$php_version artisan p:environment:database
+	php$php_version artisan p:environment:smtp
+	php$php_version artisan migrate --seed --force
+	#php$php_version artisan p:user:make
+popd
 
 #=================================================
 # START SYSTEMD SERVICE
