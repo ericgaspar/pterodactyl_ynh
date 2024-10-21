@@ -59,7 +59,7 @@ ynh_script_progression "Install $app"
 
 pushd $install_dir
 	php$php_version artisan key:generate --force
-	php$php_version artisan p:environment:setup
+	php$php_version artisan p:environment:setup --no-interaction --force
 	php$php_version artisan p:environment:database
 	php$php_version artisan p:environment:smtp
 	php$php_version artisan migrate --seed --force
